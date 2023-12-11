@@ -30,7 +30,7 @@ architecture behavioral of naval_battle is
 begin
   process (key(0), key(1))
   begin
-    if key(1) = '1' then
+    if key(1) = '0' then
       current_state <= NA;
     elsif (key(0)'EVENT AND key(0) = '0') then
       current_state <= next_state;
@@ -50,8 +50,8 @@ begin
         plays <= 0;
 
         position_a_cod(3) <= (not sw(2) AND sw(0)) OR (sw(2) AND sw(1) AND not sw(0)) OR (sw(3) AND not sw(2) AND not sw(1)) OR (sw(3) AND sw(2) AND sw(1)); 
-        position_a_cod(2) <= (sw(3) AND (not sw(1))) OR (sw(3) and (not sw(2)) AND sw(0)) OR ((not sw(1)) AND sw(0)) OR ((not sw(2)) AND (not sw(1)));  
-        position_a_cod(1) <= (not sw(3) AND not sw(2) AND not sw(1)) OR (not sw(2) AND sw(1) and sw(0)) OR (not sw(3) AND sw(2) AND not sw(1)) OR (sw(3) AND sw(2) AND sw(1) AND not sw(0)) OR (not sw(2) AND not sw(1) AND not sw(0));  
+        position_a_cod(2) <= (sw(3) AND not sw(1)) OR (sw(3) and not sw(2) AND sw(0)) OR (not sw(1) AND sw(0)) OR (not sw(2) AND not sw(1));  
+        position_a_cod(1) <= (not sw(3) AND not sw(2) AND not sw(0)) OR (not sw(2) AND sw(1) AND sw(0)) OR (not sw(3) AND sw(2) AND not sw(1)) OR (sw(3) AND sw(2) AND sw(1) AND not sw(0)) OR (not sw(2) AND not sw(1) AND not sw(0)); 
         position_a_cod(0) <= (not sw(3) AND not sw(1) AND not sw(0)) OR (not sw(3) AND not sw(2) AND not sw(1)) OR (sw(2) AND sw(1) AND not sw(0)) OR (sw(3) AND not sw(2) AND not sw(0)) OR (sw(3) AND sw(2) and not sw(1) and sw(0));  
 
         next_state <= NB;
@@ -89,13 +89,13 @@ begin
 
         -- codifica as posições para facilitar na hora de conferir
         position_b1_cod(3) <= ((not position_b1(2)) AND position_b1(0)) OR (position_b1(2) AND position_b1(1) AND (not position_b1(0))) OR (position_b1(3) AND (not position_b1(2)) AND (not position_b1(1))) OR (position_b1(3) AND position_b1(2) AND position_b1(1)); 
-        position_b1_cod(2) <= (position_b1(3) AND (not position_b1(1))) OR (position_b1(3) and (not position_b1(2)) AND position_b1(0)) OR ((not position_b1(1)) AND position_b1(0)) OR ((not position_b1(2)) AND (not position_b1(1)));  
-        position_b1_cod(1) <= (not position_b1(3) AND not position_b1(2) AND not position_b1(1)) OR (not position_b1(2) AND position_b1(1) and position_b1(0)) OR (not position_b1(3) AND position_b1(2) AND not position_b1(1)) OR (position_b1(3) AND position_b1(2) AND position_b1(1) AND not position_b1(0)) OR (not position_b1(2) AND not position_b1(1) AND not position_b1(0));  
+        position_b1_cod(2) <= (position_b1(3) AND not position_b1(1)) OR (position_b1(3) AND not position_b1(2) AND position_b1(0)) OR (not position_b1(1) AND position_b1(0)) OR (not position_b1(2) AND not position_b1(1));  
+        position_b1_cod(1) <= (not position_b1(3) AND not position_b1(2) AND not position_b1(0)) OR (not position_b1(2) AND position_b1(1) and position_b1(0)) OR (not position_b1(3) AND position_b1(2) AND not position_b1(1)) OR (position_b1(3) AND position_b1(2) AND position_b1(1) AND not position_b1(0)) OR (not position_b1(2) AND not position_b1(1) AND not position_b1(0));  
         position_b1_cod(0) <= (not position_b1(3) AND not position_b1(1) AND not position_b1(0)) OR (not position_b1(3) AND not position_b1(2) AND not position_b1(1)) OR (position_b1(2) AND position_b1(1) AND not position_b1(0)) OR (position_b1(3) AND not position_b1(2) AND not position_b1(0)) OR (position_b1(3) AND position_b1(2) and not position_b1(1) and position_b1(0));  
         
         position_b2_cod(3) <= ((not position_b2(2)) AND position_b2(0)) OR (position_b2(2) AND position_b2(1) AND (not position_b2(0))) OR (position_b2(3) AND (not position_b2(2)) AND (not position_b2(1))) OR (position_b2(3) AND position_b2(2) AND position_b2(1)); 
-        position_b2_cod(2) <= (position_b2(3) AND (not position_b2(1))) OR (position_b2(3) and (not position_b2(2)) AND position_b2(0)) OR ((not position_b2(1)) AND position_b2(0)) OR ((not position_b2(2)) AND (not position_b2(1)));  
-        position_b2_cod(1) <= (not position_b2(3) AND not position_b2(2) AND not position_b2(1)) OR (not position_b2(2) AND position_b2(1) and position_b2(0)) OR (not position_b2(3) AND position_b2(2) AND not position_b2(1)) OR (position_b2(3) AND position_b2(2) AND position_b2(1) AND not position_b2(0)) OR (not position_b2(2) AND not position_b2(1) AND not position_b2(0));  
+        position_b2_cod(2) <= (position_b2(3) AND (not position_b2(1))) OR (position_b2(3) AND (not position_b2(2)) AND position_b2(0)) OR ((not position_b2(1)) AND position_b2(0)) OR ((not position_b2(2)) AND (not position_b2(1)));  
+        position_b2_cod(1) <= (not position_b2(3) AND not position_b2(2) AND not position_b2(0)) OR (not position_b2(2) AND position_b2(1) and position_b2(0)) OR (not position_b2(3) AND position_b2(2) AND not position_b2(1)) OR (position_b2(3) AND position_b2(2) AND position_b2(1) AND not position_b2(0)) OR (not position_b2(2) AND not position_b2(1) AND not position_b2(0));  
         position_b2_cod(0) <= (not position_b2(3) AND not position_b2(1) AND not position_b2(0)) OR (not position_b2(3) AND not position_b2(2) AND not position_b2(1)) OR (position_b2(2) AND position_b2(1) AND not position_b2(0)) OR (position_b2(3) AND not position_b2(2) AND not position_b2(0)) OR (position_b2(3) AND position_b2(2) and not position_b2(1) and position_b2(0));  
 
         next_state <= A;
