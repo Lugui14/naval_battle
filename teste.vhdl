@@ -97,13 +97,13 @@ begin
           if (strikes_a = '1' AND strikes_b = "11") then
             current_state <= V;
           else
-            if(sw(3) = position_a_cod(3) AND sw(2) = position_a_cod(2) AND sw(1) = position_a_cod(1) AND sw(0) = position_a_cod(0)) then
+            if(sw(3) = position_a_cod(3) AND sw(2) = position_a_cod(2) AND sw(1) = position_a_cod(1) AND sw(0) = position_a_cod(0) AND strikes_a /= '1') then
               strikes_a <= '1';
               strikes <= strikes + 1;
-            elsif(sw(3) = position_b1_cod(3) AND sw(2) = position_b1_cod(2) AND sw(1) = position_b1_cod(1) AND sw(0) = position_b1_cod(0)) then
+            elsif(sw(3) = position_b1_cod(3) AND sw(2) = position_b1_cod(2) AND sw(1) = position_b1_cod(1) AND sw(0) = position_b1_cod(0) AND strikes_b(1) /= '1') then
               strikes_b(1) <= '1';
               strikes <= strikes + 1;
-            elsif(sw(3) = position_b2_cod(3) AND sw(2) = position_b2_cod(2) AND sw(1) = position_b2_cod(1) AND sw(0) = position_b2_cod(0)) then
+            elsif(sw(3) = position_b2_cod(3) AND sw(2) = position_b2_cod(2) AND sw(1) = position_b2_cod(1) AND sw(0) = position_b2_cod(0) AND strikes_b(0) /= '1') then
               strikes_b(0) <= '1';
               strikes <= strikes + 1;
             else
@@ -117,7 +117,7 @@ begin
             end if;  
           end if;
         when AX =>
-          if(sw(3) = position_a_cod(3) AND sw(2) = position_a_cod(2) AND sw(1) = position_a_cod(1) AND sw(0) = position_a_cod(0)) then
+          if(sw(3) = position_a_cod(3) AND sw(2) = position_a_cod(2) AND sw(1) = position_a_cod(1) AND sw(0) = position_a_cod(0) AND strikes_a /= '1') then
             strikes_a <= '1'; -- se acertou n muda de estado
             strikes <= strikes + 1;
   
@@ -126,7 +126,7 @@ begin
             else
               current_state <= AX;
             end if;
-          elsif(sw(3) = position_b1_cod(3) AND sw(2) = position_b1_cod(2) AND sw(1) = position_b1_cod(1) AND sw(0) = position_b1_cod(0)) then
+          elsif(sw(3) = position_b1_cod(3) AND sw(2) = position_b1_cod(2) AND sw(1) = position_b1_cod(1) AND sw(0) = position_b1_cod(0) AND strikes_b(1) /= '1') then
             strikes_b(1) <= '1'; -- se acertou n muda de estado
             strikes <= strikes + 1;
   
@@ -135,7 +135,7 @@ begin
             else
               current_state <= AX;            
             end if;
-          elsif(sw(3) = position_b2_cod(3) AND sw(2) = position_b2_cod(2) AND sw(1) = position_b2_cod(1) AND sw(0) = position_b2_cod(0)) then
+          elsif(sw(3) = position_b2_cod(3) AND sw(2) = position_b2_cod(2) AND sw(1) = position_b2_cod(1) AND sw(0) = position_b2_cod(0) AND strikes_b(0) /= '1') then
             strikes_b(0) <= '1'; -- se acertou n muda de estado
             strikes <= strikes + 1;
   
