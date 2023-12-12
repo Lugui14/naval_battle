@@ -1,0 +1,9 @@
+
+State Machine - |naval_battle|current_state
+Name current_state.D current_state.V current_state.AX current_state.A current_state.NB current_state.NA 
+current_state.NA 0 0 0 0 0 0 
+current_state.NB 0 0 0 0 1 1 
+current_state.A 0 0 0 1 0 1 
+current_state.AX 0 0 1 0 0 1 
+current_state.V 0 1 0 0 0 1 
+current_state.D 1 0 0 0 0 1 
